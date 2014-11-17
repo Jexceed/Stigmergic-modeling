@@ -1,4 +1,11 @@
 .idea/
-logs/
 node_modules/
+
+logs/
+
+mongod.cmd
 mongodb/
+
+settings.js
+
+testFile/

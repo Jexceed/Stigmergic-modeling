@@ -16,6 +16,7 @@
     "connect-flash" : "0.1.1",
     "nodemailer" : "0.5.2",
     "async":"0.2.9",
-    "log4js":"0.6.8"
+    "log4js":"0.6.8",
+    "socket.io":"*"
   }
 }

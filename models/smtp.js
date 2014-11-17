@@ -1,7 +1,6 @@
 var nodemailer = require('nodemailer');
 
 function Smtp() {};
-
 module.exports = Smtp;
 
 Smtp.send = function send(user,type,host, callback){
@@ -25,7 +24,7 @@ Smtp.send = function send(user,type,host, callback){
         //from: 'umlonweb@gmail.com <umlonweb@gmail.com>',
         from: 'umlonweb@163.com <umlonweb@163.com>',
         to: '"'+ user.mail +'"' + '<' + user.mail + '>',
-        subject: 'Test - Link of 激活账号 _ UML On Web', //
+        subject: 'Test - Link of account verification _ UML On Web', //
         headers: {
             'X-Laziness-level': 1000
         },

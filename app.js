@@ -1,4 +1,3 @@
-
 var express = require('express');
 var http = require('http');
 
@@ -10,7 +9,9 @@ var partials = require('express-partials');
 var flash = require('connect-flash');
 
 var sessionStore = new MongoStore({
-						db : settings.db
+						db : settings.db.name,
+                        username : settings.db.user,
+                        password : settings.db.password
 					}, function() {
 							console.log('connect mongodb success...');
 					});
@@ -37,7 +38,7 @@ logger.setLogger(log4js.getLogger('process'));
 
 var app = express();
 app.configure(function(){
-	app.set('port', process.env.PORT || 3000);
+	app.set('port', process.env.PORT || 80 );
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'ejs');
 
@@ -169,5 +170,5 @@ var db = require('./models/db.js');
 var mongodb = new db();
 
 mongodb.trueBase(function(err,db){
-    //console.log("DB.inited");
+    console.log("DB.inited");
 });
