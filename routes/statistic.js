@@ -282,7 +282,7 @@ exports.citedOrderGet = function(req,res){
                         //console.log(i);
                         //icdNormalize.icdInfoNormalize(projectList[i]);
                         icdNormalize.test(projectList[i]);
-                        return;
+                        //return;
                     }
                 });
             });
