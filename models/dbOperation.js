@@ -49,6 +49,18 @@ exports.create = function(collectionName,filter,data,callback){
     });
 };
 
+//强制创建
+exports.forceToCreate = function(collectionName,data,callback){
+    mongodb.getCollection(collectionName,function(collection){
+        collection.insert(data, {safe: true}, function(err, doc) {
+            //logger.generateLogData('INFO','icd','insert',icdData);
+            updateTimeTag(collectionName,data,function(){
+            });
+            return callback(err, doc);
+        });
+    });
+};
+
 //更新
 exports.update = function(collectionName,filter,data,callback){
     mongodb.getCollection(collectionName,function(collection){
@@ -60,7 +72,7 @@ exports.update = function(collectionName,filter,data,callback){
                 err = "not Exist";
                 return callback(err, docs);
             }
-            collection.update(filter,data, {safe: true}, function(err, doc) {
+            collection.update(filter,data, {safe: true,multi:true}, function(err, doc) {
                 //logger.generateLogData('INFO','icd','insert',icdData);
                 updateTimeTag(collectionName,filter,function(){
                 });
